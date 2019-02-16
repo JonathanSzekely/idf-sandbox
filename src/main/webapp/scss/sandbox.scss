@@ -1,1 +1,86 @@
 /** Add sass/scss rules here for your application. */
+
+@import url('https://fonts.googleapis.com/css?family=Lato:400,700');
+
+$blue-dark : #0a0f25;
+$blue-main : #101c52;
+
+$orange-main : #C86300;
+
+$white : #ffffff;
+
+* {
+    font-family: 'Lato', sans-serif;
+    box-sizing: border-box;
+}
+
+.person-view {
+    display: flex;
+
+    header {
+        width: 33.3333%;
+        overflow-x: hidden;
+        padding: 1.875rem;
+
+        .form-field input,
+        .form-field select{
+            display: block;
+
+            padding: 0.5rem;
+            height: 2.5rem;
+            width: 100%;
+            
+            border-color: $blue-dark;
+            border-width: 0.125rem;
+        }
+
+        .form-field input:focus,
+        .form-field select:focus{
+            border-color: $orange-main;
+            outline: none;            
+        }
+
+        .form-field .label,
+        .form-field label
+        {
+            display: inline-block;
+            position: relative;
+
+            font-weight: 700;
+
+            bottom: -0.5rem;
+            padding: 0 0.5rem;
+            margin-left: 0.5rem;
+            font-size: 0.875rem;
+
+            background-color: $white;
+        }
+
+        .apply-filters {
+            display: block;
+            width: 100%;
+            margin: 1.875rem 0;
+            height: 3.125rem;
+
+            text-transform: uppercase;
+            text-align: center;
+            font-weight: 700;
+
+            border: none;
+
+            color: $white;
+            background-color: $blue-main;
+
+        }
+    }
+
+    section {
+        height: 90vh;
+        width: 66.6666%;
+    }
+
+    footer {
+        height: 90vh;
+        width: 66.6666%;
+    }
+}

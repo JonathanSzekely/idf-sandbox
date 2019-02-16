@@ -1,2 +1,67 @@
+/** Add sass/scss rules here for your application. */
+@import url("https://fonts.googleapis.com/css?family=Lato:400,700");
+* {
+  font-family: 'Lato', sans-serif;
+  box-sizing: border-box;
+}
 
-/*# sourceMappingURL=sandbox.css.map */
+.person-view {
+  display: flex;
+}
+
+.person-view header {
+  width: 33.3333%;
+  overflow-x: hidden;
+  padding: 1.875rem;
+}
+
+.person-view header .form-field input,
+.person-view header .form-field select {
+  display: block;
+  padding: 0.5rem;
+  height: 2.5rem;
+  width: 100%;
+  border-color: #0a0f25;
+  border-width: 0.125rem;
+}
+
+.person-view header .form-field input:focus,
+.person-view header .form-field select:focus {
+  border-color: #C86300;
+  outline: none;
+}
+
+.person-view header .form-field .label,
+.person-view header .form-field label {
+  display: inline-block;
+  position: relative;
+  font-weight: 700;
+  bottom: -0.5rem;
+  padding: 0 0.5rem;
+  margin-left: 0.5rem;
+  font-size: 0.875rem;
+  background-color: #ffffff;
+}
+
+.person-view header .apply-filters {
+  display: block;
+  width: 100%;
+  margin: 1.875rem 0;
+  height: 3.125rem;
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: 700;
+  border: none;
+  color: #ffffff;
+  background-color: #101c52;
+}
+
+.person-view section {
+  height: 90vh;
+  width: 66.6666%;
+}
+
+.person-view footer {
+  height: 90vh;
+  width: 66.6666%;
+}
