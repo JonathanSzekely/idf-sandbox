@@ -3,57 +3,111 @@
 @import url('https://fonts.googleapis.com/css?family=Lato:400,700');
 
 $blue-dark : #0a0f25;
+$blue-light : #6679cc;
 $blue-main : #101c52;
+$blue-bright: #2f51eb;
+
 
 $orange-main : #C86300;
 
+$blue-background : #c4c5cc;
+
 $white : #ffffff;
+$black-90 : #1a1a1a;
+
+$toolbar-width : 450px;
 
 * {
     font-family: 'Lato', sans-serif;
+    color: $black-90;
     box-sizing: border-box;
 }
 
 .person-view {
     display: flex;
 
-    header {
-        width: 33.3333%;
-        overflow-x: hidden;
-        padding: 1.875rem;
+    > header {
+        margin-top: 4.5rem;
+        padding: 2rem;
 
-        .form-field input,
-        .form-field select{
-            display: block;
+        .filter-toolbar {
+            width: $toolbar-width;
 
-            padding: 0.5rem;
-            height: 2.5rem;
-            width: 100%;
-            
-            border-color: $blue-dark;
-            border-width: 0.125rem;
+            .row {
+                display: flex;
+
+                .form-field {
+                    margin-right: 2rem;
+                }
+
+                .form-field:last-child {
+                    margin-right: 0;
+                }
+            }
         }
 
-        .form-field input:focus,
-        .form-field select:focus{
-            border-color: $orange-main;
-            outline: none;            
+        .form-field {
+
+            input,
+            select {
+                display: block;
+
+                padding: 0.5rem 0.75rem;
+                height: 2.5rem;
+                width: 100%;
+
+                border: 0.125rem solid $blue-dark;
+            }
+
+            input:focus,
+            select:focus {
+                border-color: $orange-main;
+                outline: none;            
+            }
+
+            label, .label {
+                display: inline-block;
+                position: relative;
+    
+                font-weight: 700;
+    
+                bottom: -0.5rem;
+                padding: 0 0.5rem;
+                margin-left: 0.5rem;
+                font-size: 0.875rem;
+    
+                background-color: $white;
+            }
         }
 
-        .form-field .label,
-        .form-field label
-        {
-            display: inline-block;
-            position: relative;
+        .form-field.first-name,
+        .form-field.last-name {
+            width: 140px;
+        }
 
-            font-weight: 700;
+        .form-field.title {
+            width: 80px;
+        }
 
-            bottom: -0.5rem;
-            padding: 0 0.5rem;
-            margin-left: 0.5rem;
-            font-size: 0.875rem;
+        .form-field.suffix {
+            width: 120px;
+        }
 
-            background-color: $white;
+        .form-field.gender {
+            width: 100px;
+        }
+
+        .form-field.email {
+            width: 240px;
+        }
+
+        .form-field.ein {
+            width: 120px;
+        }
+
+        .form-field.start-date,
+        .form-field.end-date {
+            width: 160px;
         }
 
         .apply-filters {
@@ -74,13 +128,118 @@ $white : #ffffff;
         }
     }
 
-    section {
-        height: 90vh;
-        width: 66.6666%;
-    }
+    > section {
+        overflow: auto;
+        width: calc(100vw - 510px);
+        background-color: rgba( $blue-dark, .30 );
 
-    footer {
-        height: 90vh;
-        width: 66.6666%;
-    }
+        > .controls {
+            position: fixed;
+            left: 0;
+            top: 0;
+            padding: 1rem 2rem;
+            width: calc(#{$toolbar-width} + 4rem);
+            border-top: 0.25rem solid $blue-light;
+            border-bottom: 1px solid rgba( $black-90, .2);
+            box-shadow: 0 0 5px 0 rgba(0,0,0,0.2);
+            
+            > button {
+                padding: 0.75rem 1rem;                
+                font-weight: 700;
+                margin-right: 2rem;
+
+                color: rgba( $black-90, .8 );
+                background-color: $white;                
+
+                outline: none;
+                border: 0.125rem solid rgba( $black-90, .5 );                
+            }
+        }
+
+        .grid-view {
+            > div {         
+                display: flex;       
+                flex-flow: row wrap;
+                justify-content: flex-start;
+            }            
+
+            .cellListOddItem,
+            .cellListEvenItem {
+                display: flex;
+                padding: 1rem;
+                padding-top: 0;
+                padding-right: 0;
+
+                > .person-cell {
+                    position: relative;
+                    width: 320px;
+                    height: 420px;
+                    border-top: 0.25rem solid $blue-light;
+                    background-color: $white;
+                    box-shadow: 0 1px 2px 0 rgba( $black-90, .2 );
+
+                    > header {
+                        display: flex;
+                        padding: 0.75rem 0;
+                        border-bottom: 1px solid rgba( $black-90, .2 );
+                        box-shadow: 0 0 5px 0 rgba(0,0,0,0.1);
+
+
+                        > figure{
+                            margin: 0;
+                            display: flex;
+                            align-items: center;
+
+                            >.avatar {
+                                border: 1px solid rgba( $black-90, .25 );
+                                background: rgba( $blue-main, .4)
+                            }
+
+                            > .caption {                                
+
+                                padding: 0 0.5rem;
+
+                                >.title {
+                                    font-size: 0.75rem;
+                                    display: block;
+                                }
+                            }
+                        }
+                    }
+
+                    > section {
+                        padding: 1rem 0.75rem;
+                    }
+
+                    > footer {
+                        position: absolute;
+                        left: 1rem;
+                        bottom: 1rem;
+
+                        > .controls {                            
+
+                            button {
+                                padding: 0.5rem 0.75rem ;
+                                margin-right: 1rem;
+    
+                                background-color: $white;
+                                border: 1px solid rgba( $black-90, .2 );
+
+                                > i {  
+                                    font-size: 1rem;
+                                    margin-right: 0.25rem;                                
+                                }
+                            }
+                        }
+
+                        
+
+                        
+                    }
+                }
+            }
+        }
+
+        
+    }    
 }

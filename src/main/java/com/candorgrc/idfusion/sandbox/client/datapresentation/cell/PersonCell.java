@@ -145,9 +145,9 @@ public class PersonCell extends AbstractCell<PersonJSO> {
 					+ "</section>"
 					+ "<footer>"
 						+ "<nav class='controls'>"
-							+ "<button class='edit' action='{16}' title='Edit'><i class='edit' action='{16}'></i> Edit</button>"
-							+ "<button class='copy' action='{17}' title='Copy'><i class='copy' action='{17}'></i> Copy</button>"
-							+ "<button class='delete' action='{18}' title='Delete'><i class='delete' action='{18}'></i> Delete</button>"
+							+ "<button class='edit' action='{16}' title='Edit'><i class='edit far fa-edit' action='{16}'></i> Edit</button>"
+							+ "<button class='copy' action='{17}' title='Copy'><i class='copy far fa-copy' action='{17}'></i> Copy</button>"
+							+ "<button class='delete' action='{18}' title='Delete'><i class='delete far fa-trash-alt' action='{18}'></i> Delete</button>"
 						+ "</nav>"
 					+ "</footer>"
 				+ "</div>")

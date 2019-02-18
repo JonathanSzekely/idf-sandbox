@@ -8,92 +8,120 @@
 	<g:HTMLPanel styleName="person-view">
 		<header>
 			<div class="filter-toolbar">
-				<div class="title form-field">
-					<span class="label">Title</span>
-					<select class="value">
-						<option value=""></option>
-						<option value="Mr.">Mr.</option>
-						<option value="Mrs.">Mrs.</option>
-						<option value="Ms.">Ms.</option>
-					</select>
+
+				<div class="row">
+					<div class="first-name form-field">
+						<span class="label">First Name</span>
+						<input type="text" class="value" />
+					</div>
+	
+					<div class="last-name form-field">
+						<span class="label">Last Name</span>
+						<input type="text" class="value" />
+					</div>
 				</div>
-				<div class="first-name form-field">
-					<span class="label">First Name</span>
-					<input type="text" class="value" />
+
+
+				<div class="row">
+					<div class="title form-field">
+						<span class="label">Title</span>
+						<select class="value">
+							<option value=""></option>
+							<option value="Mr.">Mr.</option>
+							<option value="Mrs.">Mrs.</option>
+							<option value="Ms.">Ms.</option>
+						</select>
+					</div>
+	
+					<div class="suffix form-field">
+						<span class="label">Suffix</span>
+						<select class="value">
+							<option value=""></option>
+							<option value="PhD">PhD.</option>
+							<option value="Engineer">Engineer</option>
+							<option value="Doctor">Doctor</option>
+						</select>
+					</div>
+
+					<div class="gender form-field">
+						<span class="label">Gender</span>
+						<select class="value">
+							<option value=""></option>
+							<option value="m">Male</option>
+							<option value="f">Female</option>
+						</select>
+					</div>
 				</div>
-				<div class="last-name form-field">
-					<span class="label">Last Name</span>
-					<input type="text" class="value" />
+				
+
+				<div class="row">
+					<div class="race form-field">
+						<span class="label">Race</span>
+						<input type="text" class="value" />
+					</div>
+	
+					<div class="language form-field">
+						<span class="label">Language</span>
+						<input type="text" class="value" />
+					</div>
 				</div>
-				<div class="suffix form-field">
-					<span class="label">Suffix</span>
-					<select class="value">
-						<option value=""></option>
-						<option value="PhD">PhD.</option>
-						<option value="Engineer">Engineer</option>
-						<option value="Doctor">Doctor</option>
-					</select>
-				</div>
-				<div class="gender form-field">
-					<span class="label">Gender</span>
-					<select class="value">
-						<option value=""></option>
-						<option value="m">Male</option>
-						<option value="f">Female</option>
-					</select>
-				</div>
-				<div class="race form-field">
-					<span class="label">Race</span>
-					<input type="text" class="value" />
-				</div>
-				<div class="language form-field">
-					<span class="label">Language</span>
-					<input type="text" class="value" />
-				</div>
-				<div class="university form-field">
-					<span class="label">University</span>
-					<input type="text" class="value" />
-				</div>
-				<div class="buzzword form-field">
-					<span class="label">Buzzword</span>
-					<input type="text" class="value" />
-				</div>
+
 				<div class="email form-field">
 					<span class="label">E-Mail</span>
 					<input type="text" class="value" />
 				</div>
-				<div class="job-title form-field">
-					<span class="label">Job Title</span>
+
+				<div class="university form-field">
+					<span class="label">University</span>
 					<input type="text" class="value" />
 				</div>
-				<div class="linkedin-skill form-field">
-					<span class="label">LinkedinIn Skill</span>
-					<input type="text" class="value" />
-				</div>
+
 				<div class="company form-field">
 					<span class="label">Company</span>
 					<input type="text" class="value" />
 				</div>
-				<div class="dept form-field">
-					<span class="label">Department</span>
+
+				<div class="job-title form-field">
+					<span class="label">Job Title</span>
 					<input type="text" class="value" />
 				</div>
-				<div class="ein form-field">
-					<span class="label">Employer Identification Number</span>
+				
+				<div class="buzzword form-field">
+					<span class="label">Buzzword</span>
+					<input type="text" class="value" />
+				</div>				
+				
+				<div class="linkedin-skill form-field">
+					<span class="label">LinkedinIn Skill</span>
 					<input type="text" class="value" />
 				</div>
-
-
-				<div class="form-field">
-					<label for="start">Start</label>
-					<input type="date" id="start" value="2018-09-29"
-						min="2018-01-01" max="2018-12-31" />
+				
+				<div class="row">
+					<div class="ein form-field">
+						<span class="label">Employer ID</span>
+						<input type="text" class="value" />
+					</div>
+	
+					<div class="dept form-field">
+						<span class="label">Department</span>
+						<input type="text" class="value" />
+					</div>
 				</div>
 
-				<div class="form-field">
-					<label for="end">End</label>
-					<input type="date" id="end" value="2018-10-29"
-						min="2018-01-01" max="2018-12-31" />
+
+
+				<div class="row">
+					<div class="start-date form-field">
+						<label for="start">Start</label>
+						<input type="date" id="start" value="2018-09-29"
+							min="2018-01-01" max="2018-12-31" />
+					</div>
+	
+					<div class="end-date form-field">
+						<label for="end">End</label>
+						<input type="date" id="end" value="2018-10-29"
+							min="2018-01-01" max="2018-12-31" />
+					</div>
 				</div>
 
 			</div>
@@ -101,8 +129,8 @@
 		</header>
 		<section>
 			<header class="controls">
-				<button ui:field="toggle" class="toggle-view-mode">Switch View Mode</button>
-				<button ui:field="reset" class="reset">Reset Data Collection</button>
+				<button ui:field="toggle" class="toggle-view-mode">Switch view mode</button>
+				<button ui:field="reset" class="reset">Reset data collection</button>
 			</header>
 			<dp:PersonCellList ui:field="personList"
 				styleName="grid-view"></dp:PersonCellList>
