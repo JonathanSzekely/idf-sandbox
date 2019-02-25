@@ -1,0 +1,12 @@
+{
+  "files.exclude": {
+    "__error": "Not found",
+    ".vscode": true,
+    ".settings": true,
+    "target": true,
+    "src\\test": true,
+    "src\\main\\resources": true,
+    "src\\*test": true,
+    "src\\*test.*": true
+  }
+}

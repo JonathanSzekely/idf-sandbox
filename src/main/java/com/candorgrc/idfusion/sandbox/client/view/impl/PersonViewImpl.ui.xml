@@ -2,10 +2,23 @@
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
 	xmlns:g="urn:import:com.google.gwt.user.client.ui"
 	xmlns:dp="urn:import:com.candorgrc.idfusion.sandbox.client.datapresentation">
-	<ui:style>
+
+	<ui:style src="">
 	
 	</ui:style>
-	<g:HTMLPanel styleName="person-view">
+
+	<g:HTMLPanel styleName="person-view filters-active">
+		<nav class="mobile-menu">
+			<div class="active filters-view" onclick="activateView('filters')">
+				<i class="fas fa-filter"></i>
+				<label>Filters</label>
+			</div>
+
+			<div class="collection-view" onclick="activateView('collection');">
+				<i class="fas fa-th-list"></i>
+				<label>Collection</label>
+			</div>		
+		</nav>
 		<header>
 			<div class="filter-toolbar">
 
@@ -129,8 +142,16 @@
 		</header>
 		<section>
 			<header class="controls">
-				<button ui:field="toggle" class="toggle-view-mode">Switch view mode</button>
-				<button ui:field="reset" class="reset">Reset data collection</button>
+				<button ui:field="toggle" class="toggle-view-mode" onclick="toggleCollectionMode()">
+					<i class="fas fa-table"></i><label>Table view</label>
+				</button>
+				<button ui:field="reset" class="reset">
+					<span class="fa-stack">
+						<i class="fas fa-filter fa-stack-2x"></i>
+						<i class="fas fa-ban fa-stack-1x fa-inverse"></i>
+					</span>
+					<label>Clear filters</label>
+				</button>
 			</header>
 			<dp:PersonCellList ui:field="personList"
 				styleName="grid-view"></dp:PersonCellList>

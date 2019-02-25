@@ -40,15 +40,15 @@ public class PersonCell_TemplateImpl implements com.candorgrc.idfusion.sandbox.c
     sb.append(com.google.gwt.safehtml.shared.SafeHtmlUtils.htmlEscape(arg8));
     sb.append("</div></aside></section><footer><nav class='controls'><button class='edit' action='");
     sb.append(com.google.gwt.safehtml.shared.SafeHtmlUtils.htmlEscape(com.google.gwt.safehtml.shared.UriUtils.sanitizeUri(arg16)));
-    sb.append("' title='Edit'><i class='edit' action='");
+    sb.append("' title='Edit'><i class='edit far fa-edit' action='");
     sb.append(com.google.gwt.safehtml.shared.SafeHtmlUtils.htmlEscape(com.google.gwt.safehtml.shared.UriUtils.sanitizeUri(arg16)));
     sb.append("'></i> Edit</button><button class='copy' action='");
     sb.append(com.google.gwt.safehtml.shared.SafeHtmlUtils.htmlEscape(com.google.gwt.safehtml.shared.UriUtils.sanitizeUri(arg17)));
-    sb.append("' title='Copy'><i class='copy' action='");
+    sb.append("' title='Copy'><i class='copy far fa-copy' action='");
     sb.append(com.google.gwt.safehtml.shared.SafeHtmlUtils.htmlEscape(com.google.gwt.safehtml.shared.UriUtils.sanitizeUri(arg17)));
     sb.append("'></i> Copy</button><button class='delete' action='");
     sb.append(com.google.gwt.safehtml.shared.SafeHtmlUtils.htmlEscape(com.google.gwt.safehtml.shared.UriUtils.sanitizeUri(arg18)));
-    sb.append("' title='Delete'><i class='delete' action='");
+    sb.append("' title='Delete'><i class='delete far fa-trash-alt' action='");
     sb.append(com.google.gwt.safehtml.shared.SafeHtmlUtils.htmlEscape(com.google.gwt.safehtml.shared.UriUtils.sanitizeUri(arg18)));
     sb.append("'></i> Delete</button></nav></footer></div>");
 return new com.google.gwt.safehtml.shared.OnlyToBeUsedInGeneratedCodeStringBlessedAsSafeHtml(sb.toString());

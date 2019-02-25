@@ -43,11 +43,14 @@
 <!-- you can leave the body empty if you want  -->
 <!-- to create a completely dynamic UI.        -->
 <!--                                           -->
-<body>
+<body>	
 
 	<!-- OPTIONAL: include this if you want history support -->
+	
 	<iframe src="javascript:''" id="__gwt_historyFrame" tabIndex='-1'
-		style="position: absolute; width: 0; height: 0; border: 0"></iframe>
+		style="position: absolute; width: 0; height: 0; border: 0">
+	</iframe>
+	
 
 	<!-- RECOMMENDED if your web app will not function without JavaScript enabled -->
 	<noscript>
@@ -56,6 +59,39 @@
 			Your web browser must have JavaScript enabled in order for this
 			application to display correctly.</div>
 	</noscript>
+
+	<script>
+		var collectionMode = 'grid';
+
+		function activateView(viewname) {
+			var element = document.getElementsByClassName('person-view')[0];
+
+			if (viewname=='filters') {
+				element.classList.remove('collection-active')
+			}
+			else
+				element.classList.remove('filters-active')
+
+			element.classList.add(viewname + '-active');
+		}
+
+		function toggleCollectionMode(){
+			var element = document.getElementsByClassName('toggle-view-mode')[0];
+
+			if (collectionMode == 'grid') {
+				element.children[0].classList.replace('fa-table','fa-th');
+				element.children[1].innerHTML = 'Grid view';
+				collectionMode = 'table';
+			}
+			else
+			{
+				element.children[0].classList.replace('fa-th','fa-table');
+				element.children[1].innerHTML = 'Table view';
+				collectionMode = 'grid';
+			}
+		}
+		
+	</script>
 
 </body>
 </html>
