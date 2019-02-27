@@ -2,14 +2,18 @@
 
 @import url('https://fonts.googleapis.com/css?family=Lato:400,700');
 
+@mixin small-phone {
+    @media (max-width: 640px) { @content };
+}
+
 @mixin breakpoint-phone {
-    @media (max-width: 600px) { @content };
+    @media (max-width: 768px) { @content };
 }
 @mixin breakpoint-tablet-port {
-    @media (max-width: 900px) { @content };
+    @media (max-width: 1024px) { @content };
 }
 @mixin breakpoint-tablet-land {
-    @media (max-width: 1200px) { @content };
+    @media (max-width: 1240px) { @content };
 }
 
 $blue-dark : #0a0f25;
@@ -17,20 +21,25 @@ $blue-light : #6679cc;
 $blue-main : #101c52;
 $blue-bright: #2f51eb;
 
+$red: #FF4321;
+
 
 $orange-main : #C86300;
 
 $blue-background : #c4c5cc;
 
 $white : #ffffff;
-$black-90 : #1a1a1a;
+$black-90 : #3d3d3d;
 
 $toolbar-width : 450px;
 
 * {
-    font-family: 'Lato', sans-serif;
-    color: $black-90;
+    font-family: 'Lato', sans-serif;    
     box-sizing: border-box;
+}
+
+body {
+    color: $black-90;
 }
 
 /*============  HD RESOLUTION & GENERAL  =============
@@ -44,8 +53,12 @@ $toolbar-width : 450px;
     display: flex;
 
     > header {
-        margin-top: 4.5rem;
+        position: relative;
         padding: 2rem;
+
+        .toolbar-toggle {
+            position: absolute;
+        }
 
         .filter-toolbar {
             width: $toolbar-width;
@@ -61,6 +74,17 @@ $toolbar-width : 450px;
                     margin-right: 0;
                 }
             }
+
+            .section-title {
+                font-size: 1rem;
+                color: rgba( $black-90, 0.6 );
+                font-weight: 700;
+                margin-top: 1.25rem;
+            }
+
+            .section-title:first-of-type {
+                margin-top: 0;
+            }
         }
 
         .form-field {
@@ -73,7 +97,8 @@ $toolbar-width : 450px;
                 height: 2.5rem;
                 width: 100%;
 
-                border: 0.125rem solid $blue-dark;
+                border: 1px solid rgba( $black-90, .5 );
+                background-color: $white;
             }
 
             input:focus,
@@ -89,7 +114,7 @@ $toolbar-width : 450px;
                 font-weight: 700;
     
                 bottom: -0.5rem;
-                padding: 0 0.5rem;
+                padding: 0 0.375rem;
                 margin-left: 0.5rem;
                 font-size: 0.875rem;
     
@@ -147,78 +172,52 @@ $toolbar-width : 450px;
 
     > section {
         overflow: auto;
-        width: calc(100vw - 510px);
+        width: 100%;
         background-color: rgba( $blue-dark, .30 );
 
         > .controls {
-            position: fixed;
-            left: 0;
-            top: 0;
-            padding: 1rem 2rem;
-            width: calc(#{$toolbar-width} + 4rem);
-            border-top: 0.25rem solid $blue-light;
-            border-bottom: 1px solid rgba( $black-90, .2);
-            box-shadow: 0 0 5px 0 rgba(0,0,0,0.2);
+            padding: 0.75rem 1.5rem;
+            display: flex;
+            flex-direction: row;
             
             > button {
-                padding: 0.75rem 1rem;                
+                display: flex;
+                align-items: center;                 
+                padding-right: 0.75rem;         
                 font-weight: 700;
-                margin-right: 2rem;
+                margin-right: 1rem;
 
-                color: rgba( $black-90, .8 );
+                color: rgba( $black-90, .65 );
                 background-color: $white;                
 
                 outline: none;
-                border: 0.125rem solid rgba( $black-90, .5 );                
+                border: none;
+
+                > i, .icon-holder {
+                    font-size: 1.5rem;
+                    padding: 0.5rem;
+                }
+            }
+
+            .reset.disabled {
+                color: rgba(26,26,26,0.35);
+            }
+
+            .reset {
+                .icon-holder {
+                    position: relative;
+
+                    .fa-ban {
+                        color: #afafaf;
+                        position: absolute;
+                        right: 0.5rem;
+                        bottom: 0.5rem;
+                        font-size: 0.75rem;
+                    }
+                }                
             }
         }
 
-        .table-view {
-             > div {         
-                display: flex;       
-                flex-wrap: wrap;                
-            }  
-                      
-
-            .cellListOddItem,
-            .cellListEvenItem {
-                flex-grow: 1;
-                width: 100%;
-                padding: 1rem;
-                overflow: hidden;
-
-                > .person-cell {
-                    
-
-                    > header {
-                        
-                    }
-
-                    > section {
-                        
-                    }
-
-                    > footer {
-                        
-
-                        > .controls {                            
-
-                            button {
-                                
-
-                                > i {  
-                                    
-                                }
-                            }
-                        }
-
-                        
-
-                        
-                    } 
-                }
-            } 
-        }
 
         .grid-view {
             > div {         
@@ -230,21 +229,22 @@ $toolbar-width : 450px;
             .cellListOddItem,
             .cellListEvenItem {
                 display: flex;
-                padding: 1rem;
+                align-items: center;
+                padding: 1.5rem;
                 padding-top: 0;
                 padding-right: 0;
 
                 > .person-cell {
                     position: relative;
                     width: 320px;
-                    height: 420px;
+                    height: 360px;
                     border-top: 0.25rem solid $blue-light;
                     background-color: $white;
                     box-shadow: 0 1px 2px 0 rgba( $black-90, .2 );
 
                     > header {
                         display: flex;
-                        // padding: 0.75rem 0;
+                        align-items: center;
                         border-bottom: 1px solid rgba( $black-90, .2 );
                         box-shadow: 0 0 5px 0 rgba(0,0,0,0.1);
 
@@ -274,6 +274,11 @@ $toolbar-width : 450px;
                                 }
                             }
                         }
+
+                        .contextual-menu {
+                            margin-left: auto;                          
+                            padding: 0.5rem 1rem;                            
+                        }
                     }
 
                     > section {
@@ -300,43 +305,199 @@ $toolbar-width : 450px;
 
                     > footer {
                         position: absolute;
-                        left: 1rem;
-                        bottom: 1rem;
+                        right: 0.25rem;
+                        top: 3.5em;
 
-                        > .controls {                            
+                        > .controls {
+                            background-color: $white;
+                            box-shadow: 0 0 2px 1px rgba( $black-90, .25 );
 
                             button {
+                                background-color: $white;
+                                display: block;
                                 padding: 0.5rem 0.75rem ;
                                 margin-right: 1rem;
-    
-                                background-color: $white;
-                                border: 1px solid rgba( $black-90, .2 );
+                                border: none;
 
                                 > i {  
+                                    width: 1.5rem;
                                     font-size: 1rem;
                                     margin-right: 0.25rem;                                
                                 }
                             }
-                        }
-
-                        
-
-                        
+                        }                        
                     }
                 }
             }
         }
 
+
+        .table-view {
+            > div {         
+                  
+            }  
+                      
+
+            .cellListOddItem,
+            .cellListEvenItem {
+                flex-grow: 1;
+                width: 100%;
+                overflow: hidden;
+
+                > .person-cell {
+                    position: relative;
+                    display: flex;       
+                    flex-flow: row;
+                    flex-wrap: wrap;
+                    background-color: $white;
+                    
+                    border-bottom: 1px solid rgba( $black-90, .2 );
+                    
+
+                    > header {
+                        position: relative;
+                        display: flex;
+                        align-items: center;
+                        width: 100%;
+                        border-bottom: 1px solid rgba( $black-90, .2 );
+
+                        > figure{
+                            margin: 0;
+                            display: flex;
+                            align-items: center;
+
+                            >.avatar {
+                                border: 1px solid rgba( $black-90, .25 );
+                                background: rgba( $blue-main, .4)
+                            }
+
+                            > .caption {                                
+
+                                padding: 0 0.5rem;
+
+                                >.title {
+                                    font-size: 0.75rem;
+                                    display: block;
+                                }
+
+                                > .first-name, > .last-name {
+                                    margin-right: 0.25rem;
+                                    font-weight: 700;
+                                }
+                            }
+                        }
+
+                        .contextual-menu {
+                            margin-left: auto;                          
+                            padding: 0.5rem 1rem;                            
+                        }
+
+                        
+                    }
+
+                    > section {                        
+                        display: flex;
+                        flex-direction: row;
+                        flex-wrap: wrap;
+                        border-left: 1px solid rgba( $black-90, .2 );
+                        padding: 1rem 0.75rem;
+                        font-size: 0.875rem;
+                        width: 100%;
+                        background-color: #f5f5f5;
+                        
+                        
+                        .personal-info {
+                            padding-right: 0.5rem;
+                            width: 25%;
+                        }
+
+                        .education {
+                            padding-right: 0.5rem;
+                            width: 25%;
+                        }
+
+                        .work {
+                            width: 25%;
+                        }
+
+                        aside {
+                            padding-left: 0.5rem;
+                            width: 25%;
+                        }
+
+                        .section-title {
+                            font-size: 0.75rem;
+                            font-weight: 700;
+
+                            i {
+
+                            }
+
+                            span {
+                                color: rgba( $blue-dark, .4 );
+                            }                            
+                        }
+                    }
+
+                    > footer {
+                        position: absolute;
+                        right: 0.25rem;
+                        top: 3.5em;
+
+                        > .controls {
+                            background-color: $white;
+                            box-shadow: 0 0 2px 1px rgba( $black-90, .25 );
+
+                            button {
+                                background-color: $white;
+                                display: block;
+                                padding: 0.5rem 0.75rem ;
+                                margin-right: 1rem;
+                                border: none;
+
+                                > i {  
+                                    width: 1.5rem;
+                                    font-size: 1rem;
+                                    margin-right: 0.25rem;                                
+                                }
+                            }
+                        }
+                    }
+                }
+            } 
+        }
+
+        > footer {
+            padding: 0.75rem 1.5rem;
+
+            > button {
+                display: flex;
+                align-items: center;
+                padding-right: 0.75rem;         
+                font-weight: 700;
+                margin-right: 1rem;
+
+                color: rgba( $black-90, .65 );
+                background-color: $white;    
+                
+                margin: 0 auto;
+
+                outline: none;
+                border: none;
+
+                > i {
+                    font-size: 1.5rem;
+                    padding: 0.5rem;
+                }
+            }
+        }
         
     }    
 }
 
-
-/*================  PHONE RESOLUTION  ================
-======================================================*/
-@include breakpoint-phone{
+@include breakpoint-tablet-port{
     .mobile-menu {
-
+        padding: 0 0.5rem;
         width: 100vw;
         position: fixed;
         display: flex;
@@ -345,35 +506,225 @@ $toolbar-width : 450px;
 
         background-color: $white;
 
-        > div {            
+        border-bottom: 1px solid $blue-bright;
+
+        > button {            
             display: flex;
             flex-direction: column;
-            text-align: center;
+            align-items: center;
+            background-color: $white;
             
             padding: 0.5rem;
-            width: 5rem;
+            padding-bottom: 0.25rem;
+            border: none;
 
-            i {
-                font-size: 2rem;
-                margin-bottom: 0.5rem;
+            color: rgba( $black-90, .75 );
+
+            i {                
+                font-size: 1rem;
+                margin-bottom: 0.25rem;
             }
 
-            label {
+            label {                
                 font-size: 0.75rem;
                 font-weight: 700;
             }
+            
+        }
+
+        > button:focus {
+            outline: none;
         }
         
     }
-
-    
 
     .person-view {
 
         > header {
             width: 100%;
-            padding: 0.75rem;
+            padding: 0.5rem;
             overflow: auto;
+            margin-top: 3.5rem;
+
+            .filter-toolbar {
+                width: auto;
+
+                .row {
+
+                    display: flex;
+    
+                    .form-field {
+                        width: 100%;
+                    }
+                }
+            }            
+        }
+
+        > section {
+            width: 100%;
+
+            > .controls {        
+                z-index: 200;        
+                display: flex;
+                flex-direction: row;                
+                padding: 0;
+                position: fixed;
+                right: 0.5rem;
+
+                border: none;
+                box-shadow: none;
+
+                > button {
+                    padding: 0.5rem 0.25rem 0.25rem;                     
+                    margin: 0;
+                    text-align: center;
+                    display: flex;
+                    align-items: center;
+                    flex-direction: column;
+                    border: none;
+                    color: rgba( $black-90, .75 );
+
+                    > i , .icon-holder{
+                        padding: 0;
+                        display: block;
+                        font-size: 1rem;
+                        margin-bottom: 0.25rem;
+                        
+                    }
+
+                    > label {                        
+                        font-size: 0.75rem;
+                    }
+                }
+
+                .reset {
+                    > .icon-holder {
+                        position: relative;
+
+                        > .fa-filter {
+                            display: block;
+                            font-size: 1rem;                            
+                        }
+
+                        > .fa-ban {
+                            display: block;
+                            font-size: 0.5rem;
+                            position: absolute;
+                            bottom: 0;
+                            right: 0;
+                            color: $red;
+                        } 
+                    }
+                }
+
+                .reset.disabled {
+                    color: rgba( $black-90, .35 );
+                    .fa-ban {
+                        color: #afafaf;
+                    }
+                }
+            }
+
+            .grid-view {
+                display: none;
+
+                .cellListOddItem,
+                .cellListEvenItem {
+                    padding: 0.5rem;
+                    padding-bottom: 0;
+
+                    .person-cell {
+                        width: 320px;                        
+                    }
+                }
+
+                
+            }
+    
+            .grid-view, .table-view {
+                margin-top: 3rem;
+            }
+        }
+        
+    }
+
+    .person-view.filters-active {
+
+        > .mobile-menu {
+            button.filters-view {
+                border-bottom: 0.125rem solid $blue-bright;
+                color: $blue-bright;
+            }
+        }
+        
+        > section {
+            display: none;
+        }
+
+
+    }
+
+    .person-view.collection-active {
+
+        > .mobile-menu {
+            button.collection-view {
+                border-bottom: 0.125rem solid $blue-bright;
+                color: $blue-bright;
+            }
+        }
+
+        > header {
+            display: none;
+        }
+
+        .grid-view{
+            display: block;
+        }
+
+    }
+}
+
+
+/*================  PHONE RESOLUTION  ================
+======================================================*/
+@include breakpoint-phone{
+
+    .person-view {
+
+        > section {
+            width: 100%;
+
+            .grid-view {
+                display: none;
+
+                .cellListOddItem,
+                .cellListEvenItem {
+                    padding: 0.5rem;
+                    padding-bottom: 0;
+                    width: 50vw;
+
+                    .person-cell {
+                        width: 100%;                        
+                    }
+                }
+
+                
+            }
+        }
+        
+    }
+}
+    
+/*=========== SMALL PHONE RESOLUTION  ================
+======================================================*/
+@include small-phone {
+    .person-view {
+
+        > header {
+            width: 100%;
+            padding: 0.5rem;
+            overflow: auto;
+            margin-top: 3.5rem;
 
             .filter-toolbar {
                 width: auto;
@@ -390,53 +741,57 @@ $toolbar-width : 450px;
         }
 
         > section {
-            width: 100%;
+            .grid-view, .table-view {
 
-            > .controls {        
-                z-index: 200;        
-                display: flex;
-                flex-direction: row;
-                margin-left: 10rem;
-                padding: 0.5rem;
-                position: fixed;
-
-                border: none;
-                box-shadow: none;
-
-                > button {
+                > div {
+                    display: block;
+                }
+                .cellListOddItem,
+                .cellListEvenItem {
                     padding: 0.5rem;
-                    text-align: center;
-                    display: flex;
-                    flex-direction: column;
-                    border: none;
-                    margin: 0;
+                    padding-bottom: 0;
+                    width: 100vw;
+
+                    > .person-cell {
+                        box-shadow: 0 1px 2px 0 rgba( $black-90, .2 );
+                        border-bottom: none;                        
+                        border-top: none;
+
+                        > header {
+                            box-shadow: 0 0 5px 0 rgba(0,0,0,0.1);
+                        }
+
+                        height: auto;
+
+                        > section {
+                            border-left: none;
+                            background-color: $white;
+
+                            .personal-info {
+                                padding-right: 0;
+                                margin-bottom: 0.5rem;
+                                width: 100%;
+                            }
+    
+                            .education {
+                                padding-right: 0;
+                                margin-bottom: 0.5rem;
+                                width: 100%;
+                            }
+    
+                            .work {
+                                width: 100%;
+                                margin-bottom: 0.5rem;
+                            }
+    
+                            aside {
+                                padding-left: 0;
+                                width: 100%;
+                            }
+                        }                        
+                    }
                 }
             }
         }
-
-        .grid-view {
-            display: none;
-        }
-    }
-
-    .person-view.filters-active {
-        
-        > section {
-            display: none;
-        }
-
-
-    }
-
-    .person-view.collection-active {
-        > header {
-            display: none;
-        }
-
-        .grid-view{
-            display: block;
-        }
-
     }
 }
-    

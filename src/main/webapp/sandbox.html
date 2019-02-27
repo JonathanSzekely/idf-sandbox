@@ -63,14 +63,27 @@
 	<script>
 		var collectionMode = 'grid';
 
+		function toggleToolbar() {
+			var element = document.getElementsByClassName('toolbar')[0];
+			element.classList.toggle('hidden');
+		}
+
 		function activateView(viewname) {
 			var element = document.getElementsByClassName('person-view')[0];
+			var buttons = document.getElementsByClassName('mobile-menu')[0].children;			
 
 			if (viewname=='filters') {
-				element.classList.remove('collection-active')
+
+				element.classList.remove('collection-active');
+				
+				for (let item of buttons) 
+					item.classList.toggle('active');
 			}
+			
 			else
-				element.classList.remove('filters-active')
+				element.classList.remove('filters-active');
+
+			
 
 			element.classList.add(viewname + '-active');
 		}

@@ -9,18 +9,25 @@
 
 	<g:HTMLPanel styleName="person-view filters-active">
 		<nav class="mobile-menu">
-			<div class="active filters-view" onclick="activateView('filters')">
+			<button class="filters-view" onclick="activateView('filters');">
 				<i class="fas fa-filter"></i>
 				<label>Filters</label>
-			</div>
+			</button>
 
-			<div class="collection-view" onclick="activateView('collection');">
+			<button class="collection-view" onclick="activateView('collection');">
 				<i class="fas fa-th-list"></i>
 				<label>Collection</label>
-			</div>		
+			</button>		
 		</nav>
-		<header>
+
+		<header class="toolbar">
+			<!-- <button class="toolbar-toggle" onclick="toggleToolbar()">
+				<i class="fas fa-chevron-left"></i>
+				<i class="fas fa-chevron-right"></i>
+			</button> -->
 			<div class="filter-toolbar">
+
+				<div class="section-title">Personal</div>
 
 				<div class="row">
 					<div class="first-name form-field">
@@ -79,13 +86,17 @@
 					</div>
 				</div>
 
-				<div class="email form-field">
-					<span class="label">E-Mail</span>
-					<input type="text" class="value" />
-				</div>
+				<div class="section-title">Education</div>
 
 				<div class="university form-field">
 					<span class="label">University</span>
+					<input type="text" class="value" />
+				</div>
+
+				<div class="section-title">Work</div>
+
+				<div class="job-title form-field">
+					<span class="label">Job Title</span>
 					<input type="text" class="value" />
 				</div>
 
@@ -94,11 +105,26 @@
 					<input type="text" class="value" />
 				</div>
 
-				<div class="job-title form-field">
-					<span class="label">Job Title</span>
+				<div class="row">
+	
+					<div class="dept form-field">
+						<span class="label">Department</span>
+						<input type="text" class="value" />
+					</div>
+
+					<div class="ein form-field">
+						<span class="label">Employer ID</span>
+						<input type="text" class="value" />
+					</div>
+				</div>
+
+				<div class="email form-field">
+					<span class="label">E-Mail</span>
 					<input type="text" class="value" />
 				</div>
-				
+
+				<div class="section-title">Professional</div>
+
 				<div class="buzzword form-field">
 					<span class="label">Buzzword</span>
 					<input type="text" class="value" />
@@ -108,19 +134,6 @@
 					<span class="label">LinkedinIn Skill</span>
 					<input type="text" class="value" />
 				</div>
-				
-				<div class="row">
-					<div class="ein form-field">
-						<span class="label">Employer ID</span>
-						<input type="text" class="value" />
-					</div>
-	
-					<div class="dept form-field">
-						<span class="label">Department</span>
-						<input type="text" class="value" />
-					</div>
-				</div>
-
 
 
 				<div class="row">
@@ -145,10 +158,10 @@
 				<button ui:field="toggle" class="toggle-view-mode" onclick="toggleCollectionMode()">
 					<i class="fas fa-table"></i><label>Table view</label>
 				</button>
-				<button ui:field="reset" class="reset">
-					<span class="fa-stack">
-						<i class="fas fa-filter fa-stack-2x"></i>
-						<i class="fas fa-ban fa-stack-1x fa-inverse"></i>
+				<button ui:field="reset" class="reset disabled">					
+					<span class="icon-holder">
+						<i class="fas fa-filter"></i>
+						<i class="fas fa-ban"></i>
 					</span>
 					<label>Clear filters</label>
 				</button>
@@ -157,7 +170,10 @@
 				styleName="grid-view"></dp:PersonCellList>
 		
 			<footer>
-				<button ui:field="fetch" class="fetch">Fetch more...</button>
+				<button ui:field="fetch" class="fetch">
+					<i class="fas fa-spinner"></i>
+					<label>Fetch more...</label>				
+				</button>
 			</footer>
 		</section>
 	</g:HTMLPanel>
